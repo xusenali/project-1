@@ -12653,7 +12653,9 @@ fieldset:disabled .btn {
     display: flex;
     border-bottom: 1px solid #bebebf;
 }
-
+.users ul li{
+    border: 1px solid transparent;
+}
 .users ul li:nth-child(1){
     width: 55px;
 }
@@ -12667,10 +12669,10 @@ fieldset:disabled .btn {
     width: 120px;
 }
 .users ul li:nth-child(5){
-    width: 198px;
+    width: 200px;
 }
 .users ul li:nth-child(6){
-    width: 128px;
+    width: 140px;
 }
 .users ul li:nth-child(7){
     width: 180px;
@@ -12679,7 +12681,7 @@ fieldset:disabled .btn {
     width: 140px;
 }
 .users ul li:nth-child(9){
-    width: 200px;
+    width: 180px;
 }
 
 

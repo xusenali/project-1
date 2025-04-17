@@ -22,9 +22,15 @@ window.addEventListener('DOMContentLoaded', () => {
     loadUsers()
     getForm()
 })
-
+function btnclick(form) {
+    let btn = document.querySelector('#button-addon2')
+    btn.addEventListener('click', () => {
+        form.style.display = 'flex'
+    })
+}
 function getForm() {
     let form = document.querySelector('form')
+    btnclick(form)
     form.addEventListener('submit', (e) => {
         e.preventDefault()
         let formData = new FormData(form)
@@ -34,6 +40,7 @@ function getForm() {
         const modalEl = document.getElementById('pupilModal');
         const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
         modal.hide()
+        form.reset()
     })
 }
 
@@ -51,13 +58,13 @@ function userspost(form) {
             workPosition: form.get('work'),
             userDaraja: form.get('daraja'),
             userSalary: form.get('price'),
-            isMarried: form.has('isMarried') 
+            isMarried: form.has('isMarried')
         })
     })
-    .then(() => {
-        loadUsers()
-    })
-    .catch(err => console.log("POST xatoligi:", err))
+        .then(() => {
+            loadUsers()
+        })
+        .catch(err => console.log("POST xatoligi:", err))
 }
 
 function creatUsers(users) {
@@ -103,15 +110,15 @@ function categoriesUsers(allUsers) {
     let searchInput = document.querySelector('#search')
 
     select.addEventListener('change', () => {
-        const selectedCategory = select.value        
+        const selectedCategory = select.value
         const filteredUsers = selectedCategory == 'Hammasi'
-            ? allUsers
-            : allUsers.filter(user => user.userDaraja == selectedCategory)
+        ? allUsers
+        : allUsers.filter(user => user.userDaraja == selectedCategory)
         
         creatUsers(filteredUsers)
-        
-        
-      
+
+
+
         let searchValue = searchInput.value.toLowerCase().trim()
         filteredUsers.forEach(user => {
             if (user.name.toLowerCase().includes(searchValue)) {
@@ -128,15 +135,15 @@ function categoriesCity(allUsers) {
     let searchInput = document.querySelector('#search')
 
     select.addEventListener('change', () => {
-        const selectedCategory = select.value        
+        const selectedCategory = select.value
         const filteredUsers = selectedCategory == 'Hammasi'
             ? allUsers
             : allUsers.filter(user => user.city == selectedCategory)
-        
+
         creatUsers(filteredUsers)
-        
-        
-      
+
+
+
         let searchValue = searchInput.value.toLowerCase().trim()
         filteredUsers.forEach(user => {
             if (user.name.toLowerCase().includes(searchValue)) {
